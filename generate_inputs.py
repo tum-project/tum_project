@@ -6,7 +6,8 @@ def create_feff_input_file(Cu_location=[0, 0, 0], O_location=[2, 0, 0], folder="
     
     Cu_location_str = "_".join(list(map(str, Cu_location)))
     O_location_str = "_".join(list(map(str, O_location)))
-    with open(f"{folder}/feff_Cu_{Cu_location_str}_O_{O_location_str}.inp", "w") as f:
+    input_file_path = os.path.join(folder, f"feff_Cu_{Cu_location_str}_O_{O_location_str}.inp")
+    with open(input_file_path, "w") as f:
         f.write("HOLE  1  1.0\n\n")
         f.write("CONTROL  1  1  1  1\n")
         f.write("PRINT    1  0  0  0\n\n")
