@@ -1,0 +1,8 @@
+                                                          Feff 6.01l  potph 4.12
+ Abs   Z=29 Rmt= 1.213 Rnm= 1.778 K shell
+ Pot 1 Z= 8 Rmt= 0.987 Rnm= 1.447
+ Gam_ch=1.761E+00 H-L exch
+ Mu=-3.008E+00 kf=1.423E+00 Vint=-1.072E+01 Rs_int= 2.549
+ -------------------------------------------------------------------------------
+    file        sig2   amp ratio    deg    nlegs  r effective
+ feff0001.dat 0.00000   100.000     1.000     2   2.2000

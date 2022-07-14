@@ -1,0 +1,34 @@
+
+======== running Feff module C:\Users\ahmad\xraylarch\lib\site-packages\larch\bin\win64\feff6l.exe ========
+ Feff 6.01l  
+ 
+ Calculating potentials and phases...
+    free atom potential and density for atom type    0
+    free atom potential and density for atom type    1
+    overlapped potential and density for unique potential    0
+    overlapped potential and density for unique potential    1
+    muffin tin radii and interstitial parameters
+    phase shifts for unique potential    0
+    phase shifts for unique potential    1
+ Preparing plane wave scattering amplitudes...
+  nncrit in prcrit            9
+ Searching for paths...
+    Rmax  2.0100  keep and heap limits   0.0000000   0.0000000
+    Preparing neighbor table
+    nfound  nheap  nheapx  nsc    r
+    Paths found        1   (nheapx, nbx       1   2)
+ Eliminating path degeneracies...
+    Plane wave chi amplitude filter   2.50%
+    Unique paths      1,  total paths       1
+ Calculating EXAFS parameters...
+    Curved wave chi amplitude ratio   4.00%
+    Discard feff.dat for paths with cw ratio <   2.67%
+    path  cw ratio     deg    nleg  reff
+      1   100.000     1.000     2   2.0100
+    1 paths kept,    1 examined.
+ Calculating chi...
+    Use all paths with cw amplitude ratio   4.00%
+    Use Debye-Waller factors from files.dat.  S02  1.000
+    feff0001.dat     100.0000
+ ff2chi done,    1/   1 paths used.
+ Feff done.  Have a nice day.

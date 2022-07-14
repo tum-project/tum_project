@@ -1,0 +1,8 @@
+
+ Rmax  2.0025,  keep limit  0.000, heap limit  0.000      Feff 6.01l  paths 3.05
+ Plane wave chi amplitude filter   2.50%
+ -------------------------------------------------------------------------------
+     1    2   1.000  index, nleg, degeneracy, r=  2.0025
+      x           y           z     ipot  label      rleg      beta        eta
+    2.000000    0.000000    0.100000   1 'O     '     2.0025  180.0000    0.0000
+    0.000000    0.000000    0.000000   0 'Cu    '     2.0025  180.0000    0.0000
