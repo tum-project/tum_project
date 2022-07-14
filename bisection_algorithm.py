@@ -51,3 +51,40 @@ def bisection(f,a,b,N):
             print("Bisection method fails.")
             return None
     return (a_n + b_n)/2
+
+
+import numpy as np
+from generate_plot import generate_plot
+from scipy.stats import wasserstein_distance
+
+
+# Function to calculate Chi-distance
+def chi2_distance(A, B):
+    # compute the chi-squared distance using above formula
+    chi = 0.5 * np.sum([((a - b) ** 2) / (a + b)
+                      for (a, b) in zip(A, B)])
+    return chi 
+
+
+def mse_distance_function(A, B, ax=0):
+    mse = (np.square(A - B)).mean(axis=ax)
+    return mse
+
+# distance_function = mse_distance_function
+# distance_function = chi2_distance
+distance_function = wasserstein_distance
+
+distance_function_name = str(distance_function.__name__)
+
+def get_k_and_chi(Cu_location, O_location, input_home="feff_inputs", output_home="outputs", apply_fourier_transform=False):
+    k, chi = generate_plot(Cu_location=Cu_location, O_location=O_location, input_home="feff_inputs", output_home="outputs", apply_fourier_transform=False)
+    return k, chi
+
+
+def f(x):
+    Cu_location, O_location = [0, 0, 0], [x, 0, 0]
+    return distance_function(get_k_and_chi(Cu_location, O_location)[1], get_k_and_chi(Cu_location, O_location=[2, 0, 0])[1])
+
+
+result = bisection(f, 1.0, 3.5, 50)
+print(f"{distance_function_name}: {result}")
