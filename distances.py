@@ -20,9 +20,9 @@ def chi2_distance(A, B):
     return chi 
 
 
-# distance_function = mse_distance_function
+distance_function = mse_distance_function
 # distance_function = chi2_distance
-distance_function = wasserstein_distance
+# distance_function = wasserstein_distance
 
 distance_function_name = str(distance_function.__name__)
 
@@ -101,9 +101,9 @@ for i in range(3):
     plt.subplots_adjust(left=0.15)
     ax.plot(x_axis, y_axis, **{'color': 'black', 'marker': '.'})
 
-    ax.set_title(f"Distance relative to Cu: {str(Cu_location)} and O: {str(O_location)}")
+    ax.set_title(f"{distance_function_name} from Cu: {str(Cu_location)} and O: {str(O_location)}")
     ax.set_xlabel(f"position in the co-ordinate {index_to_coordinate[i]}")
-    ax.set_ylabel(f"{distance_function_name} from {str(O_location)}")
+    ax.set_ylabel(f"distance from {str(O_location)}")
 
     figure_path = f"{index_to_coordinate[i]}_co-ordinate_{distance_function_name}.png"
     plt.savefig(figure_path)
