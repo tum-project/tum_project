@@ -1,0 +1,12 @@
+HOLE  1  1.0
+
+CONTROL  1  1  1  1
+PRINT    1  0  0  0
+
+POTENTIALS
+  0  29  Cu
+  1  8   O
+
+ATOMS
+  0.000  0.000  0.000  0
+  2.300  0.000  0.000  1
