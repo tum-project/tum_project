@@ -35,6 +35,15 @@ Cu_location = [0, 0, 0]
 O_location = [2, 0, 0]
 k0, chi0 = generate_plot(Cu_location=Cu_location, O_location=O_location, input_home="feff_inputs", output_home="outputs", apply_fourier_transform=False)
 
+introduce_error = True
+error_string = ""
+if introduce_error:
+    mu, sigma = 0, 0.001 # mean and standard deviation
+    error_string = f"_error_{str(mu)}_{str(sigma)}"
+
+    error_array = np.random.normal(mu, sigma, len(chi0))
+    chi0 = chi0 + error_array
+    print(chi0-error_array)
 
 ks_and_chis = []
 x_axis = []
@@ -66,4 +75,4 @@ ax.set_title(f"distance: {distance_function_name}")
 ax.set_xlabel("O location in x axis")
 ax.set_ylabel("Distance from optimal point (x=2.0)")
 
-plt.savefig(f"{distance_function_name}_comparison.jpg")
+plt.savefig(f"{distance_function_name}{error_string}_comparison.jpg")
