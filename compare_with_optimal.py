@@ -14,14 +14,14 @@ def chi2_distance(A, B):
     return chi 
 
 
-def mse_distance_function(A, B, ax=0):
+def mse_distance(A, B, ax=0):
     mse = (np.square(A - B)).mean(axis=ax)
     return mse
 
 
 # distance_function = wasserstein_distance
 # distance_function = chi2_distance
-distance_function = mse_distance_function
+distance_function = mse_distance
 
 distance_function_name = str(distance_function.__name__)
 

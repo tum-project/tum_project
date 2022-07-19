@@ -7,7 +7,7 @@ from scipy.stats import wasserstein_distance
 from generate_plot import generate_plot
 
 
-def mse_distance_function(A, B, ax=0):
+def mse_distance(A, B, ax=0):
     mse = (np.square(A - B)).mean(axis=ax)
     return mse
 
@@ -90,7 +90,7 @@ index_to_coordinate = {
 
 # pprint(test_positions)
 plots_folder = "plots"
-distance_functions = [mse_distance_function, chi2_distance, wasserstein_distance]
+distance_functions = [mse_distance, chi2_distance, wasserstein_distance]
 # distance_function = distance_functions[0]
 for distance_function in distance_functions:
     distance_function_name = str(distance_function.__name__)
