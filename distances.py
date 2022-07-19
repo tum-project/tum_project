@@ -63,10 +63,10 @@ O_location = [2.0, 0, 0]
 k0, chi0 = generate_plot(Cu_location=Cu_location, O_location=O_location, input_home="feff_inputs", output_home="outputs", apply_fourier_transform=False)
 
 
-introduce_error = True
+introduce_error = False
 error_string = ""
 if introduce_error:
-    mu, sigma = 0, 0.001 # mean and standard deviation
+    mu, sigma = 0, 0.1 # mean and standard deviation
     error_string = f"_error_{str(mu)}_{str(sigma)}"
 
     error_array = np.random.normal(mu, sigma, len(chi0))
@@ -89,7 +89,7 @@ index_to_coordinate = {
 }
 
 # pprint(test_positions)
-
+plots_folder = "plots"
 distance_functions = [mse_distance_function, chi2_distance, wasserstein_distance]
 # distance_function = distance_functions[0]
 for distance_function in distance_functions:
@@ -115,6 +115,6 @@ for distance_function in distance_functions:
         ax.set_xlabel(f"position in the co-ordinate {index_to_coordinate[i]}")
         ax.set_ylabel(f"distance from {str(O_location)}")
 
-        figure_path = f"{index_to_coordinate[i]}_co-ordinate_{distance_function_name}{error_string}.png"
+        figure_path = f"{plots_folder}/{index_to_coordinate[i]}_co-ordinate_{distance_function_name}{error_string}.png"
         plt.savefig(figure_path)
         plt.close(fig)

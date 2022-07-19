@@ -74,5 +74,5 @@ ax.plot(x, y, **{'color': 'lightsteelblue', 'marker': 'o'})
 ax.set_title(f"distance: {distance_function_name}")
 ax.set_xlabel("O location in x axis")
 ax.set_ylabel("Distance from optimal point (x=2.0)")
-
-plt.savefig(f"{distance_function_name}{error_string}_comparison.jpg")
+plots_folder = "plots"
+plt.savefig(f"{plots_folder}/{distance_function_name}{error_string}_comparison.jpg")
