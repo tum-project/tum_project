@@ -1,5 +1,5 @@
 import shutil
-from larch.xafs import feff6l
+from larch.xafs import feff8l
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -31,26 +31,26 @@ def generate_plot(Cu_location, O_location, input_home, output_home, apply_fourie
         create_feff_input_file(Cu_location=Cu_location, O_location=O_location, folder=input_home)
         os.makedirs(output_folder, exist_ok=True)
         shutil.copy(src_path, dest_path)
-        feff6l(folder=output_folder, feffinp=out_file, verbose=False)
+        feff8l(folder=output_folder, feffinp=out_file, verbose=False)
     
     elif not os.path.exists(dest_path):
         print("Input file does not exist in the results folder")
         print(f"Creating the feff input file: {dest_path} (in the results folder), and chi.dat file: {chi_path}")
         os.makedirs(output_folder, exist_ok=True)
         shutil.copy(src_path, dest_path)
-        feff6l(folder=output_folder, feffinp=out_file, verbose=False)
+        feff8l(folder=output_folder, feffinp=out_file, verbose=False)
     
     elif not os.path.exists(chi_path):
         print("chi.dat does not exist")
         print(f"Creating the chi.dat file: {chi_path}")
-        feff6l(folder=output_folder, feffinp=out_file, verbose=False)
+        feff8l(folder=output_folder, feffinp=out_file, verbose=False)
     
     else:
         print("Simulation has already been run, using the old results")
     
     dat_file_path = os.path.join(output_folder, "chi.dat")
     dat_file = open(dat_file_path, "r")
-    lines = dat_file.readlines()
+    lines = dat_file.read().strip().split("\n")
 
     _k = []
     _chi = []
@@ -59,12 +59,14 @@ def generate_plot(Cu_location, O_location, input_home, output_home, apply_fourie
         _k.append(float(p[0]))
         _chi.append(float(p[1]))
 
-    k=np.zeros([int((20-0)/0.05+1),], dtype=float)
-    chi=np.zeros([int((20-0)/0.05+1),], dtype=float)
+    # k=np.zeros([int((20-0)/0.05+1),], dtype=float)
+    # chi=np.zeros([int((20-0)/0.05+1),], dtype=float)
+    k=np.array(_k, dtype=float)
+    chi=np.array(_chi, dtype=float)
 
-    for i in range(0,len(k)):
-        k[i]=_k[i]
-        chi[i]=_chi[i]
+    # for i in range(0,len(k)):
+    #     k[i]=_k[i]
+    #     chi[i]=_chi[i]
     
     # k = np.array(_k)
     # chi = np.array(_chi)
